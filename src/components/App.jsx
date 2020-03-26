@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
-
+import NavBar from './NavBar'
+import StockTicker from './StockTicker'
+import VideoPlayer from './VideoPlayer'
 export default class App extends Component {
     render() {
         return (
             <div className="container">
-                <h1 className="title">Bears and Bear Markets</h1>
+                <NavBar/>
+                <StockTicker/>
+                <VideoPlayer/>
             </div>
         )
     }

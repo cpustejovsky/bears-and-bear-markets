@@ -1,11 +1,7 @@
-import React, { Component } from 'react'
-
-export default class StockTicker extends Component {
-    render() {
-        return (
-            <div>
-                StockTicker
-            </div>
-        )
-    }
+import React from "react";
+import TickerItem from './TickerItem'
+export default function StockTicker() {
+  return (
+    <TickerItem/>
+  );
 }

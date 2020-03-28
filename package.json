@@ -17,7 +17,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "css-build": "node-sass --omit-source-map-url src/sass/style.sass src/css/style.css",
+    "css-build": "node-sass --omit-source-map-url src/sass/style.sass build/css/style.css",
     "css-watch": "npm run css-build -- --watch",
     "css-start": "npm run css-watch"
   },

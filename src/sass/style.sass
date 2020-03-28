@@ -1,10 +1,12 @@
 $family-sans-serif: "Google Sans", sans-serif
 $primary: #5F5CFF
+
 .ticker
     background-color: black
     padding: 20px 0
     display: flex
     flex-wrap: nowrap
+    justify-content: space-between
     overflow-x: auto
     -webkit-overflow-scrolling: touch
     &::-webkit-scrollbar
@@ -14,6 +16,8 @@ $primary: #5F5CFF
         flex: 0 0 auto
         padding: 0 2.5%
 .navbar
+    &__logo
+        height: 90px
     &__about
         min-width: 300px
         padding: 10px

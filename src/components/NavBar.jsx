@@ -27,13 +27,12 @@ const NavBar = () => {
             href="https://polygon.io/"
             target="_blank"
             rel="noopener noreferrer"
+            className="navbar-item"
           >
             <img
-              className="navbar-item"
+              className="navbar__logo"
               alt="polygon.io logo"
               src={PolygonIO}
-              width="40"
-              height="28"
             />
           </a>
           <a className="navbar-item" href="/">

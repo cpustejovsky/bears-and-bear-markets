@@ -1,0 +1,27 @@
+$family-sans-serif: "Google Sans", sans-serif
+$primary: #5F5CFF
+.ticker
+    background-color: black
+    padding: 20px 0
+    display: flex
+    flex-wrap: nowrap
+    overflow-x: auto
+    -webkit-overflow-scrolling: touch
+    &::-webkit-scrollbar
+        display: none
+    &__tick
+        color: #00FF00
+        flex: 0 0 auto
+        padding: 0 2.5%
+.navbar
+    &__about
+        min-width: 300px
+        padding: 10px
+        color: black
+    &__market
+        &__open
+            color: green
+        &__closed
+            color: red
+
+@import "../../node_modules/bulma/bulma.sass"

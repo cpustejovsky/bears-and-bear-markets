@@ -1,7 +1,17 @@
 import React from "react";
-import TickerItem from './TickerItem'
+import TickerItem from "./TickerItem";
 export default function StockTicker() {
   return (
-    <TickerItem/>
+    <div className="ticker">
+      <TickerItem symbol={"AAPL"} />
+      <TickerItem symbol={"AAPL"} />
+      <TickerItem symbol={"AAPL"} />
+      <TickerItem symbol={"AAPL"} />
+      <TickerItem symbol={"AAPL"} />
+      <TickerItem symbol={"AAPL"} />
+      <TickerItem symbol={"AAPL"} />
+      <TickerItem symbol={"AAPL"} />
+      <TickerItem symbol={"AAPL"} />
+    </div>
   );
 }

@@ -1,4 +1,5 @@
 import axios from "axios";
+import moment from "moment";
 import { useState, useEffect } from "react";
 
 const polygon = axios.create({
@@ -8,6 +9,22 @@ const polygon = axios.create({
     apiKey: process.env.REACT_APP_API_KEY
   }
 });
+
+const isMarketOpen = () => {
+  let now = moment();
+  let isWeekday =
+    now.format("dddd") !== "Saturday" && now.format("dddd") !== "Sunday";
+  let isAfterOpen =
+    now.format("A") === "AM" &&
+    Number(now.format("hh")) >= 9 &&
+    Number(now.format("mm")) >= 30;
+  let isBeforeClose =
+    now.format("A") === "PM" &&
+    Number(now.format("hh")) <= 4 &&
+    Number(now.format("mm")) <= 30;
+  return isWeekday && isAfterOpen && isBeforeClose;
+};
+
 //TODO: check that this work
 export function CheckMarketStatus() {
   const [marketStatus, setMarketStatus] = useState("");
@@ -26,13 +43,35 @@ export function CheckMarketStatus() {
   return marketStatus;
 }
 
-export async function FetchStockTicker(symbol) {
-/*
-    First check day and time
+export function FetchStockTicker(symbol) {
+  //TODO: figure out if price went down or up (either currently or before close) and pass that information along
+  const [name, setName] = useState(null);
+  const [price, setPrice] = useState(null);
 
-    If the market is open at current day and time, run get request with /v2/snapshot/locale/us/markets/stocks/tickers/{ticker} and return relevant data.
-
-    Otherwise, run /v1/last_quote/stocks/{ticker} and return relevant data.
-*/
-
+  useEffect(() => {
+    if (isMarketOpen()) {
+      (async symbol => {
+        try {
+          const response = await polygon.get(
+            `/v2/snapshot/locale/us/markets/stocks/tickers/${symbol}`
+          );
+          setName(response.data.ticker.ticker);
+          setPrice(response.data.ticker.lastTrade.p);
+        } catch (error) {
+          console.log(error);
+        }
+      })(symbol);
+    } else {
+      (async symbol => {
+        try {
+          const response = await polygon.get(`/v1/last_quote/stocks/${symbol}`);
+          setName(response.data.symbol);
+          setPrice(response.data.last.askprice);
+        } catch (error) {
+          console.log(error);
+        }
+      })(symbol);
+    }
+  }, [name, price]);
+  return [name, price];
 }

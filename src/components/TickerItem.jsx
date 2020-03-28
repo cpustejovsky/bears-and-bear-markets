@@ -1,46 +1,13 @@
 import React from "react";
+import { FetchStockTicker } from "../api/polygon"
+const TickerItem = ({ symbol }) => {
+  const [name, price] = FetchStockTicker(symbol)
 
-const TickerItem = () => {
   return (
     <>
-      <div className="ticker">
         <div className="ticker__tick">
-          <h2>BTC: 9001.00 +</h2>
+          <h2>{name}: {price} +</h2>
         </div>
-        <div className="ticker__tick">
-          <h2>BTC: 9001.00 +</h2>
-        </div>
-        <div className="ticker__tick">
-          <h2>BTC: 9001.00 +</h2>
-        </div>
-        <div className="ticker__tick">
-          <h2>BTC: 9001.00 +</h2>
-        </div>
-        <div className="ticker__tick">
-          <h2>BTC: 9001.00 +</h2>
-        </div>
-        <div className="ticker__tick">
-          <h2>BTC: 9001.00 +</h2>
-        </div>
-        <div className="ticker__tick">
-          <h2>BTC: 9001.00 +</h2>
-        </div>
-        <div className="ticker__tick">
-          <h2>BTC: 9001.00 +</h2>
-        </div>
-        <div className="ticker__tick">
-          <h2>BTC: 9001.00 +</h2>
-        </div>
-        <div className="ticker__tick">
-          <h2>BTC: 9001.00 +</h2>
-        </div>
-        <div className="ticker__tick">
-          <h2>BTC: 9001.00 +</h2>
-        </div>
-        <div className="ticker__tick">
-          <h2>BTC: 9001.00 +</h2>
-        </div>
-      </div>
     </>
   );
 };

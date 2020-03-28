@@ -23,5 +23,17 @@ $primary: #5F5CFF
             color: green
         &__closed
             color: red
-
+    &__settings
+        align-items: center !important
+        &__mobile
+            display : none
+        @media screen and (max-width: 1024px)
+            color: $primary
+            margin: 10px
+            &__mobile
+                font-size: 1.25rem
+                color: $primary
+                align-self: center
+                justify-self: center
+                display: initial
 @import "../../node_modules/bulma/bulma.sass"

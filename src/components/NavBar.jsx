@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import PolygonIO from "../images/polygonio_white.svg";
-import axios from "axios";
 const NavBar = () => {
   const [navbar, setNavbar] = useState("navbar-menu");
   const [burger, setBurger] = useState("navbar-burger burger");
-  const [marketStatus, setMarketStatus] = useState("");
   const openMobileNav = () => {
     if (burger === "navbar-burger burger") {
       console.log("open!");
@@ -17,49 +15,6 @@ const NavBar = () => {
     }
   };
 
-  //TODO: check that this works
-  const CheckMarketStatus = async () => {
-    try {
-      const response = await axios.get(
-        `https://api.polygon.io/marketstatus/now?apiKey=${process.env.REACT_APP_API_KEY}`
-      );
-      setMarketStatus(response.data.market);
-    } catch (error) {
-      console.log(error);
-      setMarketStatus("closed");
-    }
-  };
-  const renderMarketStatus = () => {
-    if (marketStatus === "open") {
-      return (
-        <p>
-          Market: <span className="navbar__market__open">Open</span>
-        </p>
-      );
-    } else if (marketStatus === "closed") {
-      return (
-        <p>
-          Market: <span className="navbar__market__closed">Closed</span>
-        </p>
-      );
-    } else if (marketStatus === "error") {
-      return (
-        <p>
-          <strong>Market Times:</strong> 9:30AM to 4:30PM EST
-        </p>
-      );
-    } else {
-      console.log("API has changed; please update accordingly");
-      return (
-        <p>
-          <strong>Market Times:</strong> 9:30AM to 4:30PM EST
-        </p>
-      );
-    }
-  };
-  useEffect(() => {
-    CheckMarketStatus();
-  }, [marketStatus]);
   return (
     <nav
       className="navbar is-primary"
@@ -115,8 +70,9 @@ const NavBar = () => {
               </div>
             </div>
           </div>
-          <div className="navbar-end">
-            <div className="navbar-item">{renderMarketStatus()}</div>
+          <div className="navbar-end navbar__settings">
+            <i className="fas fa-cog fa-lg"></i>
+            <span className="navbar__settings__mobile"> Settings</span>
           </div>
         </div>
       </div>

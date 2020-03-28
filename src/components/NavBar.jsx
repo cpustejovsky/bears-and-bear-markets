@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import PolygonIO from "../images/polygonio.svg";
+import axios from "axios";
 const NavBar = () => {
   const [navbar, setNavbar] = useState("navbar-menu");
   const [burger, setBurger] = useState("navbar-burger burger");
-
+  const [marketStatus, setMarketStatus] = useState("");
   const openMobileNav = () => {
     if (burger === "navbar-burger burger") {
       console.log("open!");
@@ -16,11 +17,32 @@ const NavBar = () => {
     }
   };
 
+  
+  //TODO: check that this works
+  const CheckMarketStatus = async () => {
+    try {
+      const response = await axios.get(
+        `https://api.polygon.io/v1/marketstatus/now?apiKey=${process.env.REACT_APP_API_KEY}`
+      );
+      console.log(response);
+      if (response.data.market === "open") {
+        setMarketStatus("Open");
+      } else if (response.data.market === "closed") {
+        setMarketStatus("Closed");
+      }
+    } catch (error) {
+      console.log(error);
+      setMarketStatus("Market Times: 9:30AM to 4:30PM EST");
+    }
+  };
+  useEffect(() => {
+    CheckMarketStatus();
+  }, [marketStatus]);
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
         <a href="https://polygon.io/" target="_blank" rel="noopener noreferrer">
-          <img className="navbar-item" src={PolygonIO} width="40" height="28" />
+          <img className="navbar-item" alt="polygon.io logo" src={PolygonIO} width="40" height="28" />
         </a>
         <a className="navbar-item" href="/">
           Bears and Bear Markets
@@ -55,6 +77,9 @@ const NavBar = () => {
               </p>
             </div>
           </div>
+        </div>
+        <div className="navbar-end">
+          <div className="navbar-item">{marketStatus}</div>
         </div>
       </div>
     </nav>

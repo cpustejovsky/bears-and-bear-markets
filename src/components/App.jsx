@@ -1,8 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import NavBar from "./NavBar";
 import StockTicker from "./StockTicker";
 import VideoPlayer from "./VideoPlayer";
-import axios from "axios";
 const App = () => {
   return (
     <div className="container">

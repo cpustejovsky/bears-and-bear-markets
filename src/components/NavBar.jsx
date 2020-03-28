@@ -17,22 +17,36 @@ const NavBar = () => {
     }
   };
 
-  
   //TODO: check that this works
   const CheckMarketStatus = async () => {
     try {
       const response = await axios.get(
-        `https://api.polygon.io/v1/marketstatus/now?apiKey=${process.env.REACT_APP_API_KEY}`
+        `https://api.polygon.io/marketstatus/now?apiKey=${process.env.REACT_APP_API_KEY}`
       );
-      console.log(response);
-      if (response.data.market === "open") {
-        setMarketStatus("Open");
-      } else if (response.data.market === "closed") {
-        setMarketStatus("Closed");
-      }
+      setMarketStatus(response.data.market);
     } catch (error) {
       console.log(error);
-      setMarketStatus("Market Times: 9:30AM to 4:30PM EST");
+      setMarketStatus("error");
+    }
+  };
+  const renderMarketStatus = () => {
+    if (marketStatus === "open") {
+      return <p className="navbar__market__open">Open</p>;
+    } else if (marketStatus === "close") {
+      return <p className="navbar__market__close">Closed</p>;
+    } else if (marketStatus === "error") {
+      return (
+        <p>
+          <strong>Market Times:</strong> 9:30AM to 4:30PM EST
+        </p>
+      );
+    } else {
+      console.log("API has changed; please update accordingly");
+      return (
+        <p>
+          <strong>Market Times:</strong> 9:30AM to 4:30PM EST
+        </p>
+      );
     }
   };
   useEffect(() => {
@@ -42,7 +56,13 @@ const NavBar = () => {
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
         <a href="https://polygon.io/" target="_blank" rel="noopener noreferrer">
-          <img className="navbar-item" alt="polygon.io logo" src={PolygonIO} width="40" height="28" />
+          <img
+            className="navbar-item"
+            alt="polygon.io logo"
+            src={PolygonIO}
+            width="40"
+            height="28"
+          />
         </a>
         <a className="navbar-item" href="/">
           Bears and Bear Markets
@@ -79,7 +99,7 @@ const NavBar = () => {
           </div>
         </div>
         <div className="navbar-end">
-          <div className="navbar-item">{marketStatus}</div>
+          <div className="navbar-item">{renderMarketStatus()}</div>
         </div>
       </div>
     </nav>

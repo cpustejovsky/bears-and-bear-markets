@@ -23,6 +23,21 @@
 .navbar__market__closed {
   color: red; }
 
+.navbar__settings {
+  align-items: center !important; }
+  .navbar__settings__mobile {
+    display: none; }
+  @media screen and (max-width: 1024px) {
+    .navbar__settings {
+      color: #5F5CFF;
+      margin: 10px; }
+      .navbar__settings__mobile {
+        font-size: 1.25rem;
+        color: #5F5CFF;
+        align-self: center;
+        justify-self: center;
+        display: initial; } }
+
 /*! bulma.io v0.8.1 | MIT License | github.com/jgthms/bulma */
 @keyframes spinAround {
   from {

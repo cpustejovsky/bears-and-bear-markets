@@ -26,14 +26,14 @@ const NavBar = () => {
       setMarketStatus(response.data.market);
     } catch (error) {
       console.log(error);
-      setMarketStatus("error");
+      setMarketStatus("open");
     }
   };
   const renderMarketStatus = () => {
     if (marketStatus === "open") {
       return <p className="navbar__market__open">Open</p>;
-    } else if (marketStatus === "close") {
-      return <p className="navbar__market__close">Closed</p>;
+    } else if (marketStatus === "closed") {
+      return <p className="navbar__market__closed">Closed</p>;
     } else if (marketStatus === "error") {
       return (
         <p>

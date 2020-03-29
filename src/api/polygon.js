@@ -1,6 +1,5 @@
 import axios from "axios";
-import moment from "moment";
-import tx from "moment-timezone";
+import moment from "moment-timezone";
 import { useState, useEffect } from "react";
 
 const polygon = axios.create({

@@ -12,7 +12,6 @@ export default function StockTicker() {
       <TickerItem symbol={"MSFT"} />
       <TickerItem symbol={"NVDA"} />
       <TickerItem symbol={"UBER"} />
-
     </div>
   );
 }

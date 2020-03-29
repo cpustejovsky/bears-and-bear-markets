@@ -6,9 +6,9 @@ const TickerItem = ({ symbol }) => {
     return (
       <>
         <div className="ticker__tick">
-          <h2>
+          <h1>
             {name}: {price}
-          </h2>
+          </h1>
         </div>
       </>
     );

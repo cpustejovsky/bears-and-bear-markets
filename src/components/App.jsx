@@ -6,9 +6,8 @@ import MarketStatus from "./MarketStatus";
 const App = () => {
   return (
     <div className="container-fluid">
-      <StockTicker />
-      {/* TODO: move market status to footer or somewhere outside of the header and ticker */}
       <NavBar />
+      <StockTicker />
       <div className="container">
         <MarketStatus/>
         <VideoPlayer />

@@ -9,7 +9,7 @@ const polygon = axios.create({
     apiKey: process.env.REACT_APP_API_KEY
   }
 });
-
+//TODO: add in market holidays check when that is working
 const isMarketOpen = () => {
   let now = moment().tz('America/New_York');
   let isWeekday =
@@ -25,7 +25,7 @@ const isMarketOpen = () => {
   return isWeekday && isAfterOpen && isBeforeClose;
 };
 
-//TODO: check that this work
+//TODO: check that this work when market status api endpoint is back online
 export function CheckMarketStatus() {
   const [marketStatus, setMarketStatus] = useState("");
 

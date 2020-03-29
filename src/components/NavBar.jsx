@@ -19,7 +19,6 @@ const NavBar = () => {
 
   return (
     <>
-    <SettingsModal settingsModal = {settingsModal} onClose={setSettingsModal}/>
     <nav
       className="navbar is-primary"
       role="navigation"

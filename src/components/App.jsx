@@ -3,6 +3,7 @@ import NavBar from "./NavBar";
 import StockTicker from "./StockTicker";
 import VideoPlayer from "./VideoPlayer";
 import MarketStatus from "./MarketStatus";
+import SettingsModal from "./SettingsModal";
 const App = () => {
   return (
     <div className="container-fluid">

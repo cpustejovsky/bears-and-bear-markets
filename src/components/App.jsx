@@ -11,7 +11,7 @@ const App = () => {
       <StockTicker />
       <VideoPlayer />
       <CtaButton />
-      <MarketStatus />
+      {/* <MarketStatus /> */}
     </div>
   );
 };

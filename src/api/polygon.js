@@ -1,5 +1,6 @@
 import axios from "axios";
 import moment from "moment";
+import tx from "moment-timezone";
 import { useState, useEffect } from "react";
 
 const polygon = axios.create({
@@ -11,7 +12,7 @@ const polygon = axios.create({
 });
 
 const isMarketOpen = () => {
-  let now = moment();
+  let now = moment().tz('America/New_York');
   let isWeekday =
     now.format("dddd") !== "Saturday" && now.format("dddd") !== "Sunday";
   let isAfterOpen =

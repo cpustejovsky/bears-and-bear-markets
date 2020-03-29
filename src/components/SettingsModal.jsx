@@ -6,7 +6,7 @@ const SettingsModal = ({ settingsModal, onClose }) => {
     return null;
   }
   return ReactDom.createPortal(
-    <div className="">
+    <div className="modal is-active">
       <div className="modal-background" onClick={() => onClose(false)} />
       <div className="modal-card">
         <header className="modal-card-head">

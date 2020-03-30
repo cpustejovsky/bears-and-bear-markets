@@ -11,7 +11,7 @@ const polygon = axios.create({
 });
 //TODO: add in market holidays check when that is working
 const isMarketOpen = () => {
-  let now = moment().tz('America/New_York');
+  let now = moment().tz("America/New_York");
   let isWeekday =
     now.format("dddd") !== "Saturday" && now.format("dddd") !== "Sunday";
   let isAfterOpen =
@@ -74,4 +74,21 @@ export function FetchStockTicker(symbol) {
     }
   }, [name, price]);
   return [name, price];
+}
+
+export async function FetchTickerDetails(symbol) {
+  const response = await polygon.get(`/v1/meta/symbols/${symbol}/company`);
+  const companyData = {
+    logo: response.data.logo,
+    name: response.data.name,
+    country: response.data.country,
+    sector: response.data.sector,
+    industry: response.data.industry,
+    ceo: response.data.ceo,
+    employees: response.data.employees,
+    url: response.data.url,
+    description: response.data.description,
+    similar: response.data.similar
+  };
+  return companyData
 }

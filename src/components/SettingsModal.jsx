@@ -10,19 +10,12 @@ const SettingsModal = ({ settingsModal, onClose }) => {
       <div className="modal-background" onClick={() => onClose(false)} />
       <div className="modal-card">
         <header className="modal-card-head">
-          <p className="modal-card-title">Settings: {settingsModal}</p>
+          <p className="modal-card-title">Settings</p>
           <button className="delete" onClick={() => onClose(false)} />
         </header>
         <section className="modal-card-body">
           <div className="content">
-            “Above all, do not lie to yourself. A man who lies to himself and
-            listens to his own lie comes to a point where he does not discern
-            any truth either in himself or anywhere around him, and thus falls
-            into disrespect towards himself and others. Not respecting anyone,
-            he ceases to love, and having no love, he gives himself up to the
-            passions and coarse pleasures, in order to occupy and amuse himself,
-            and in his vices reaches complete bestiality, and it all comes from
-            lying continually to others and to himself.”
+            <strong>Settings coming soon!</strong>
           </div>
         </section>
         <footer className="modal-card-foot">

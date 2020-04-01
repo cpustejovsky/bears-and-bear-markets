@@ -47,9 +47,11 @@ export function FetchStockTicker(symbol) {
   //TODO: figure out if price went down or up (either currently or before close) and pass that information along
   const [name, setName] = useState(null);
   const [price, setPrice] = useState(null);
+  const [change, setChange] = useState(null);
+  const [percent, setPercent] = useState(null);
 
   useEffect(() => {
-    if (isMarketOpen()) {
+    // if (isMarketOpen()) {
       (async symbol => {
         try {
           const response = await polygon.get(
@@ -57,23 +59,25 @@ export function FetchStockTicker(symbol) {
           );
           setName(response.data.ticker.ticker);
           setPrice(response.data.ticker.lastTrade.p);
+          setChange(response.data.ticker.todaysChange);
+          setPercent(response.data.ticker.todaysChangePerc);
         } catch (error) {
           console.log(error);
         }
       })(symbol);
-    } else {
-      (async symbol => {
-        try {
-          const response = await polygon.get(`/v1/last_quote/stocks/${symbol}`);
-          setName(response.data.symbol);
-          setPrice(response.data.last.askprice);
-        } catch (error) {
-          console.log(error);
-        }
-      })(symbol);
-    }
-  }, [name, price]);
-  return [name, price];
+    // } else {
+    //   (async symbol => {
+    //     try {
+    //       const response = await polygon.get(`/v1/last_quote/stocks/${symbol}`);
+    //       setName(response.data.symbol);
+    //       setPrice(response.data.last.askprice);
+    //     } catch (error) {
+    //       console.log(error);
+    //     }
+    //   })(symbol);
+    // }
+  }, [name, price, change, percent]);
+  return [name, price, change, percent];
 }
 
 export async function FetchTickerDetails(symbol) {

@@ -13,11 +13,13 @@
     "moment-timezone": "^0.5.28",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "bulma": "^0.8.1",
+    "node-sass": "^4.13.1"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "node-sass --omit-source-map-url src/sass/style.sass src/css/style.css && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "css-build": "node-sass --omit-source-map-url src/sass/style.sass src/css/style.css",
@@ -38,9 +40,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "bulma": "^0.8.1",
-    "node-sass": "^4.13.1"
   }
 }

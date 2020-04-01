@@ -15,14 +15,16 @@ const isMarketOpen = () => {
   let isWeekday =
     now.format("dddd") !== "Saturday" && now.format("dddd") !== "Sunday";
   let isAfterOpen =
-    now.format("A") === "AM" &&
-    Number(now.format("hh")) >= 9 &&
-    Number(now.format("mm")) >= 30;
+    (now.format("A") === "AM" && Number(now.format("hh")) >= 10) ||
+    (Number(now.format("hh")) === 9 && Number(now.format("mm")) >= 30);
   let isBeforeClose =
-    now.format("A") === "PM" &&
-    Number(now.format("hh")) <= 4 &&
-    Number(now.format("mm")) <= 30;
-  return isWeekday && isAfterOpen && isBeforeClose;
+    Number(now.format("hh")) <= 3 ||
+    (Number(now.format("hh")) === 4 && Number(now.format("mm")) <= 30);
+  if (now.format("A") === "AM") {
+    return isWeekday && isAfterOpen;
+  } else if (now.format("A") === "PM") {
+    return isWeekday && isBeforeClose;
+  }
 };
 
 //TODO: check that this work when market status api endpoint is back online
@@ -51,8 +53,9 @@ export function FetchStockTicker(symbol) {
   const [percent, setPercent] = useState(null);
 
   useEffect(() => {
-    // if (isMarketOpen()) {
+    if (isMarketOpen()) {
       (async symbol => {
+        console.log("market is open");
         try {
           const response = await polygon.get(
             `/v2/snapshot/locale/us/markets/stocks/tickers/${symbol}`
@@ -65,18 +68,19 @@ export function FetchStockTicker(symbol) {
           console.log(error);
         }
       })(symbol);
-    // } else {
-    //   (async symbol => {
-    //     try {
-    //       const response = await polygon.get(`/v1/last_quote/stocks/${symbol}`);
-    //       setName(response.data.symbol);
-    //       setPrice(response.data.last.askprice);
-    //     } catch (error) {
-    //       console.log(error);
-    //     }
-    //   })(symbol);
-    // }
-  }, [name, price, change, percent]);
+    } else {
+      (async symbol => {
+        try {
+          console.log("market is closed");
+          const response = await polygon.get(`/v1/last_quote/stocks/${symbol}`);
+          setName(response.data.symbol);
+          setPrice(response.data.last.askprice);
+        } catch (error) {
+          console.log(error);
+        }
+      })(symbol);
+    }
+  }, []);
   return [name, price, change, percent];
 }
 
@@ -94,5 +98,5 @@ export async function FetchTickerDetails(symbol) {
     description: response.data.description,
     similar: response.data.similar
   };
-  return companyData
+  return companyData;
 }

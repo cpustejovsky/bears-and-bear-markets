@@ -63,13 +63,26 @@ const NavBar = () => {
                 <a className="navbar-link">About</a>
 
                 <div className="navbar-dropdown">
-                  <p className="navbar__about">
-                    Being invested often leaves you feeling, well, invested. And
-                    when the value of your invetments drop, it's easy to become
-                    stressed. So this site allows you to view your assets while
-                    also viewing a relaxing nature live feed of bears to calm
-                    you through any bear markets.
-                  </p>
+                  <div className="navbar__about">
+                    <p>
+                      Being invested often leaves you feeling, well, invested.
+                      And when the value of your invetments drop, it's easy to
+                      become stressed. So this site allows you to view your
+                      assets while also viewing a relaxing nature live feed of
+                      bears to calm you through any bear markets.
+                    </p>
+                    <hr/>
+                    <strong>
+                      Data provided by{" "}
+                      <a
+                        href="https://polygon.io/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        polygon.io
+                      </a>
+                    </strong>
+                  </div>
                 </div>
               </div>
             </div>

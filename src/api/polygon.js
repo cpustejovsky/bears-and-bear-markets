@@ -18,7 +18,7 @@ const isMarketOpen = () => {
     (now.format("A") === "AM" && Number(now.format("hh")) >= 10) ||
     (Number(now.format("hh")) === 9 && Number(now.format("mm")) >= 30);
   let isBeforeClose =
-    Number(now.format("hh")) <= 3 ||
+    Number(now.format("hh")) <= 3 || Number(now.format("hh")) === 12 ||
     (Number(now.format("hh")) === 4 && Number(now.format("mm")) <= 30);
   if (now.format("A") === "AM") {
     return isWeekday && isAfterOpen;

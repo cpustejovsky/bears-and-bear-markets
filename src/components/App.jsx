@@ -2,8 +2,8 @@ import React from "react";
 import NavBar from "./NavBar";
 import StockTicker from "./StockTicker";
 import VideoPlayer from "./VideoPlayer";
-import MarketStatus from "./MarketStatus";
-import CtaButton from "./CtaButton";
+// import MarketStatus from "./MarketStatus";
+import Footer from "./Footer";
 
 const App = () => {
   return (
@@ -11,7 +11,7 @@ const App = () => {
       <NavBar />
       <StockTicker />
       <VideoPlayer />
-      <CtaButton />
+      <Footer />
       {/* <MarketStatus /> */}
     </div>
   );

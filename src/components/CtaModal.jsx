@@ -15,7 +15,23 @@ const CtaModal = ({ ctaModal, setCtaModal }) => {
         </header>
         <section className="modal-card-body">
           <div className="content">
-            VISIT POLYGON.IO
+            <p>
+              Started by ex-Googlers with a proven track record of building
+              performant, large scale platforms with clean, intuitive usability,
+              polygon.io provides reliable market data at low cost and with
+              simple integrations.
+            </p>
+            <strong>
+              Visit{" "}
+              <a
+                href="https://polygon.io/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Polygon.io
+              </a>{" "}
+              to learn more
+            </strong>
           </div>
         </section>
         <footer className="modal-card-foot">

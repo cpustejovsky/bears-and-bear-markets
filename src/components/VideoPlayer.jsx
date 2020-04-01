@@ -5,6 +5,7 @@ export default class VideoPlayer extends Component {
     return (
       <figure class="image is-16by9">
         <iframe
+          title="nature video"
           className="has-ratio"
           src="https://www.youtube.com/embed/Gm3bQVANtVo?autoplay=1"
           frameborder="0"

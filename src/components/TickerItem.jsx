@@ -6,8 +6,10 @@ const TickerItem = ({ symbol }) => {
   const setTickerColor = () => {
     if (change < 0) {
       setColor("ticker__tick__display__negative");
-    } else {
+    } else if(change > 0) {
       setColor("ticker__tick__display__positive");
+    } else if(change === null){
+      setColor("ticker__tick__display__off")
     }
   };
   useEffect(() => {

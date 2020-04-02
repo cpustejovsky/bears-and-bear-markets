@@ -14,10 +14,19 @@ const TickerItem = ({ symbol }) => {
     setTickerColor();
   }, [change]);
   const renderPercent = () => {
-    if (percent !== 0) {
-      return <>{name}: {price} ({percent}%)</>  
+    console.log(percent);
+    if (percent) {
+      return (
+        <>
+          {name}: {price} ({percent}%)
+        </>
+      );
     } else {
-      return <>{name}: {price}</>  
+      return (
+        <>
+          {name}: {price}
+        </>
+      );
     }
   };
   if (name && price) {
@@ -30,9 +39,7 @@ const TickerItem = ({ symbol }) => {
             console.log(data);
           }}
         >
-          <h1 className={color}>
-            {renderPercent()}
-          </h1>
+          <h1 className={color}>{renderPercent()}</h1>
         </div>
       </>
     );

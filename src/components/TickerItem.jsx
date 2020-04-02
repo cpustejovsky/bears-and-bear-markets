@@ -6,17 +6,14 @@ const TickerItem = ({ symbol }) => {
   const setTickerColor = () => {
     if (change < 0) {
       setColor("ticker__tick__display__negative");
-    } else if(change > 0) {
+    } else if (change > 0) {
       setColor("ticker__tick__display__positive");
-    } else if(change === null){
-      setColor("ticker__tick__display__off")
     }
   };
   useEffect(() => {
     setTickerColor();
   }, [change]);
   const renderPercent = () => {
-    console.log(percent);
     if (percent) {
       return (
         <>

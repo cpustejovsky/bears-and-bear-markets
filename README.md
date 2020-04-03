@@ -15,8 +15,8 @@ When clicking a one of the items in the stock ticker, this view will appear; liv
 ![settings-mockup](settings.png)
 
 ## Requirements
-~~* Display video player that displays live nature feed~~
-~~* Display of basic market info below header and above video player~~
+* ~~Display video player that displays live nature feed~~
+* ~~Display of basic market info below header and above video player~~
 * when clicked, component displays more information about stock or market; view shifts
 * Settings to change video
 * Settings to change stock tickers displayed

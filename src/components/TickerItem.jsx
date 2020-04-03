@@ -33,10 +33,9 @@ const TickerItem = ({ symbol }) => {
       <>
         <div
           className="ticker__tick"
-          onClick={async () => {
-            const data = await FetchTickerDetails(name);
-            console.log(data);
-          }}
+          // onClick={async () => {
+          //   const data = await FetchTickerDetails(name);
+          // }}
         >
           <h1 className={color}>{renderPercent()}</h1>
         </div>

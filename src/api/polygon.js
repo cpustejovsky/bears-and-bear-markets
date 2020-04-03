@@ -39,7 +39,6 @@ const fetchTickerData = async symbol => {
         change: response.data.ticker.todaysChange,
         percent: response.data.ticker.todaysChangePerc
       };
-      console.log("RUNNING!");
       return data;
     } catch (error) {
       console.log(error);
@@ -89,7 +88,6 @@ export function FetchStockTicker(symbol) {
 
   useEffect(async () => {
     let data = await fetchTickerData(symbol);
-    console.log(data);
     setName(data.ticker);
     setPrice(data.price);
     setChange(data.change);
@@ -99,7 +97,6 @@ export function FetchStockTicker(symbol) {
   useInterval(async () => {
     if (isMarketOpen()) {
       let data = await fetchTickerData(symbol);
-      console.log(data);
       setName(data.ticker);
       setPrice(data.price);
       setChange(data.change);

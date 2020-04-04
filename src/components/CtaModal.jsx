@@ -10,7 +10,7 @@ const CtaModal = ({ ctaModal, setCtaModal }) => {
       <div className="modal-background" onClick={() => setCtaModal(false)} />
       <div className="modal-card">
         <header className="modal-card-head">
-          <p className="modal-card-title">CTA: {ctaModal}</p>
+          <p className="modal-card-title">What us Polygon.io?</p>
           <button className="delete" onClick={() => setCtaModal(false)} />
         </header>
         <section className="modal-card-body">
@@ -28,7 +28,7 @@ const CtaModal = ({ ctaModal, setCtaModal }) => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Polygon.io
+                polygon.io
               </a>{" "}
               to learn more
             </strong>

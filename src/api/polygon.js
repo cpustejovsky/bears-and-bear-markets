@@ -86,13 +86,17 @@ export function FetchStockTicker(symbol) {
   const [change, setChange] = useState(null);
   const [percent, setPercent] = useState(null);
 
-  useEffect(async () => {
-    let data = await fetchTickerData(symbol);
-    setName(data.ticker);
-    setPrice(data.price);
-    setChange(data.change);
-    setPercent(data.percent);
-  }, []);
+  useEffect(() => {
+    async function fetchData() {
+      let data = await fetchTickerData(symbol);
+      setName(data.ticker);
+      setPrice(data.price);
+      setChange(data.change);
+      setPercent(data.percent);
+    }
+    fetchData();
+  }, [symbol]);
+
 
   useInterval(async () => {
     if (isMarketOpen()) {

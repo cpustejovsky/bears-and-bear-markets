@@ -11,12 +11,15 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.18.1",
+    "bulma": "^0.8.1",
     "moment-timezone": "^0.5.28",
+    "node-sass": "^4.13.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-redux": "^7.2.0",
     "react-scripts": "3.4.1",
-    "bulma": "^0.8.1",
-    "node-sass": "^4.13.1"
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "node-sass --omit-source-map-url src/sass/style.sass src/css/style.css && react-scripts start",

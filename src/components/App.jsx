@@ -1,36 +1,15 @@
 import React, { Component } from "react";
+import { Router, Route, Switch } from "react-router-dom";
 import NavBar from "./NavBar";
-import StockTicker from "./StockTicker";
-import VideoPlayer from "./VideoPlayer";
-import TickerInfo from "./TickerInfo";
+import Display from "./Display";
 import Footer from "./Footer";
 
 class App extends Component {
-  state = {
-    tickerInfo: false,
-  };
-  displayTickerInfo = () => {
-    if (this.state.tickerInfo) {
-      return (
-        <div className="columns">
-          <div className="column is-one-quarter">
-            <TickerInfo />
-          </div>
-          <div className="column is-three-quarter">
-            <VideoPlayer />
-          </div>
-        </div>
-      );
-    } else {
-      return <VideoPlayer />;
-    }
-  };
   render() {
     return (
       <div className="container-fluid">
         <NavBar />
-        <StockTicker />
-        {this.displayTickerInfo()}
+        <Display />
         <Footer />
       </div>
     );

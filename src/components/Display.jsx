@@ -1,14 +1,12 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import StockTicker from "./StockTicker";
 import VideoPlayer from "./VideoPlayer";
 import TickerInfo from "./TickerInfo";
 
 class Display extends Component {
-  state = {
-    tickerInfo: false,
-  };
   displayTickerInfo = () => {
-    if (this.state.tickerInfo) {
+    if (this.props.selectedTicker) {
       return (
         <div className="columns">
           <div className="column is-one-quarter">
@@ -33,4 +31,8 @@ class Display extends Component {
   }
 }
 
-export default Display;
+const mapStateToProps = state => {
+  return { selectedTicker: state.selectedTicker };
+};
+
+export default connect(mapStateToProps, { })(Display);

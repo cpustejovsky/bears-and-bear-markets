@@ -1,26 +1,7 @@
 import { combineReducers } from "redux";
 
-
-
-const displayVideos = (state = [], action) => {
-  switch (action.type) {
-    case "FETCH_VIDEOS":
-      return action.payload;
-    default:
-      return state;
-  }
-};
-
-const selectSingleVideo = (state = null, action) => {
-  switch (action.type) {
-    case "FETCH_VIDEOS":
-      return action.payload;
-    default:
-      return state;
-  }
-};
+const replace = () => 42;
 
 export default combineReducers({
-    videos: displayVideos,
-    video: selectSingleVideo
-})
+  replace,
+});

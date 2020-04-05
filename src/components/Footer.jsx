@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import CtaModal from "./CtaModal";
+import MarketStatus from "./MarketStatus";
 export default function CtaButton() {
   const [ctaModal, setCtaModal] = useState(false);
   return (
@@ -20,6 +21,7 @@ export default function CtaButton() {
             </a>
             .
           </p>
+          <MarketStatus/>
         </div>
       </footer>
     </>

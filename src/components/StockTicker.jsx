@@ -1,17 +1,24 @@
-import React from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
 import TickerItem from "./TickerItem";
-export default function StockTicker() {
-  return (
-    <div className="ticker">
-      <TickerItem symbol={"FB"} />
-      <TickerItem symbol={"AMZN"} />
-      <TickerItem symbol={"AAPL"} />
-      <TickerItem symbol={"NFLX"} />
-      <TickerItem symbol={"GOOGL"} />
-      <TickerItem symbol={"INTL"} />
-      <TickerItem symbol={"MSFT"} />
-      <TickerItem symbol={"NVDA"} />
-      <TickerItem symbol={"UBER"} />
-    </div>
-  );
+class StockTicker extends Component {
+  renderTickers(){
+    return this.props.tickers.map(ticker =>{
+      return <TickerItem symbol={ticker} />
+
+    })
+  }
+  render() {
+    return (
+      <div className="ticker">
+        {this.renderTickers()}
+      </div>
+    );
+  }
 }
+
+const mapStateToProps = state => {
+  return { tickers: state.tickers };
+};
+
+export default connect(mapStateToProps, { })(StockTicker);

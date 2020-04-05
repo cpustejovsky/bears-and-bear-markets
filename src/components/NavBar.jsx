@@ -17,7 +17,7 @@ const NavBar = () => {
 
   return (
     <>
-\      <nav
+      <nav
         className="navbar is-primary"
         role="navigation"
         aria-label="main navigation"
@@ -68,7 +68,7 @@ const NavBar = () => {
                       assets while also viewing a relaxing nature live feed of
                       bears to calm you through any bear markets.
                     </p>
-                    <hr/>
+                    <hr />
                     <strong>
                       Data provided by{" "}
                       <a
@@ -83,11 +83,11 @@ const NavBar = () => {
                 </div>
               </div>
             </div>
-            <div
-              className="navbar-end navbar__settings"
-            >
-              <i className="fas fa-cog fa-lg"></i>
-              <span className="navbar__settings__mobile"> Settings</span>
+            <div className="navbar-end navbar__settings">
+              <a href="/settings">
+                <i className="fas fa-cog fa-lg"></i>
+                <span className="navbar__settings__mobile"> Settings</span>
+              </a>
             </div>
           </div>
         </div>

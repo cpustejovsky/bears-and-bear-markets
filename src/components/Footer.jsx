@@ -21,7 +21,7 @@ export default function CtaButton() {
             </a>
             .
           </p>
-          <MarketStatus/>
+          <MarketStatus />
         </div>
       </footer>
     </>

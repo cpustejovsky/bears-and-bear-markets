@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import PolygonIO from "../images/polygonio_white.svg";
-import SettingsModal from "./SettingsModal";
 const NavBar = () => {
   const [navbar, setNavbar] = useState("navbar-menu");
   const [burger, setBurger] = useState("navbar-burger burger");
-  const [settingsModal, setSettingsModal] = useState(false);
   const openMobileNav = () => {
     if (burger === "navbar-burger burger") {
       console.log("open!");
@@ -19,8 +17,7 @@ const NavBar = () => {
 
   return (
     <>
-      <SettingsModal settingsModal={settingsModal} onClose={setSettingsModal} />
-      <nav
+\      <nav
         className="navbar is-primary"
         role="navigation"
         aria-label="main navigation"
@@ -87,7 +84,6 @@ const NavBar = () => {
               </div>
             </div>
             <div
-              onClick={() => setSettingsModal(!settingsModal)}
               className="navbar-end navbar__settings"
             >
               <i className="fas fa-cog fa-lg"></i>

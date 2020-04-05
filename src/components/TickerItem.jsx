@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 import { FetchStockTicker, FetchTickerDetails } from "../api/polygon";
-const TickerItem = ({ symbol }) => {
-  const [name, price, change, percent] = FetchStockTicker(symbol);
+import { selectTicker } from "../actions";
+const TickerItem = (props) => {
+  const [name, price, change, percent] = FetchStockTicker(props.symbol);
   const [color, setColor] = useState("ticker__tick__display");
   const setTickerColor = () => {
     if (change < 0) {
@@ -33,9 +35,18 @@ const TickerItem = ({ symbol }) => {
       <>
         <div
           className="ticker__tick"
-          // onClick={async () => {
-          //   const data = await FetchTickerDetails(name);
-          // }}
+          onClick={async () => {
+            const data = await FetchTickerDetails(name);
+            if (props.selectedTicker !== null) {
+              if (data.name === props.selectedTicker.name) {
+                props.selectTicker(null);
+              } else {
+                props.selectTicker(data);
+              }
+            } else {
+              props.selectTicker(data);
+            }
+          }}
         >
           <h1 className={color}>{renderPercent()}</h1>
         </div>
@@ -46,4 +57,8 @@ const TickerItem = ({ symbol }) => {
   }
 };
 
-export default TickerItem;
+const mapStateToProps = (state) => {
+  return { selectedTicker: state.selectedTicker };
+};
+
+export default connect(mapStateToProps, { selectTicker })(TickerItem);

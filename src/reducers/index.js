@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
 import { videosReducer, selectedVideoReducer } from "./videoReducer";
-import {tickersReducer } from "./tickerReducer"
-
+import { tickersReducer, selectedTickerReducer } from "./tickerReducer";
 
 export default combineReducers({
   videos: videosReducer,
   selectedVideo: selectedVideoReducer,
-  tickers: tickersReducer
+  tickers: tickersReducer,
+  selectedTicker: selectedTickerReducer,
 });

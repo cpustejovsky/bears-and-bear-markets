@@ -18,3 +18,12 @@ export const tickersReducer = (state = defaultTickers, action) => {
       return state;
   }
 };
+
+export const selectedTickerReducer = (state = null, action) => {
+  switch (action.type) {
+    case "TICKER_SELECTED":
+      return action.payload;
+    default:
+      return state;
+  }
+};

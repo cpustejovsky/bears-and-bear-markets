@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import PolygonIO from "../images/polygonio_white.svg";
 const NavBar = () => {
   const [navbar, setNavbar] = useState("navbar-menu");
@@ -36,9 +37,9 @@ const NavBar = () => {
                 src={PolygonIO}
               />
             </a>
-            <a className="navbar-item" href="/">
+            <Link to="/" className="navbar-item">
               Bears and Bear Markets
-            </a>
+            </Link>
 
             <a
               onClick={() => openMobileNav()}
@@ -84,10 +85,10 @@ const NavBar = () => {
               </div>
             </div>
             <div className="navbar-end navbar__settings">
-              <a href="/settings">
+              <Link to="/settings">
                 <i className="fas fa-cog fa-lg"></i>
                 <span className="navbar__settings__mobile"> Settings</span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

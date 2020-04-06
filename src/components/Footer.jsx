@@ -6,7 +6,7 @@ export default function CtaButton() {
   return (
     <>
       <CtaModal ctaModal={ctaModal} setCtaModal={setCtaModal} />
-      <footer class="footer">
+      <footer class="footer margin-top">
         <div class="content has-text-centered">
           <p>
             <strong>Data provided</strong> by{" "}

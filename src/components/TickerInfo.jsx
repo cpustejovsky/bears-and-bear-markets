@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import { FetchStockTicker, FetchTickerDetails } from "../api/polygon";
-import { selectTicker } from "../actions";
+import { selectSingleTicker } from "../actions";
 
-const TickerInfo = ({ selectTicker, selectedTicker }) => {
+const TickerInfo = ({ selectSingleTicker, selectedTicker }) => {
   const [name, price, change, percent] = FetchStockTicker(
     selectedTicker.symbol
   );
@@ -14,7 +14,7 @@ const TickerInfo = ({ selectTicker, selectedTicker }) => {
           className="list-item"
           onClick={async () => {
             const data = await FetchTickerDetails(company);
-            selectTicker(data);
+            selectSingleTicker(data);
           }}
         >
           {company}
@@ -93,4 +93,4 @@ const mapStateToProps = (state) => {
   return { selectedTicker: state.selectedTicker };
 };
 
-export default connect(mapStateToProps, { selectTicker })(TickerInfo);
+export default connect(mapStateToProps, { selectSingleTicker })(TickerInfo);

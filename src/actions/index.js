@@ -5,9 +5,16 @@ export const selectVideo = (videoId) => {
     }
 };
 
-export const selectTicker = (tickerInfo) => {
+export const selectSingleTicker = (tickerInfo) => {
     return {
-        type: "TICKER_SELECTED",
+        type: "SINGLE_TICKER_SELECTED",
         payload: tickerInfo
+    }
+}
+
+export const selectTickers = (type) => {
+    return {
+        type: "TICKERS_SELECTED",
+        payload: type
     }
 }

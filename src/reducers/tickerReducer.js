@@ -4,18 +4,18 @@ const defaultTickers = {
   auto: ["TSLA", "TM", "HMC", "GM", "F"],
 };
 //TODO: hook up to a redux form in settings
-export const tickersReducer = (state = defaultTickers.auto, action) => {
+export const tickersReducer = (state="faang", action) => {
   switch (action.type) {
-    case "FETCH_TICKERS":
-      return action.payload;
+    case "TICKERS_SELECTED":
+      return defaultTickers[action.payload];
     default:
-      return state;
+      return defaultTickers[state];
   }
 };
 
 export const selectedTickerReducer = (state = null, action) => {
   switch (action.type) {
-    case "TICKER_SELECTED":
+    case "SINGLE_TICKER_SELECTED":
       return action.payload;
     default:
       return state;

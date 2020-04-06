@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { FetchStockTicker, FetchTickerDetails } from "../api/polygon";
-import { selectTicker } from "../actions";
+import { selectSingleTicker } from "../actions";
 const TickerItem = (props) => {
   const [name, price, change, percent] = FetchStockTicker(props.symbol);
   const [color, setColor] = useState("ticker__tick__display");
@@ -39,12 +39,12 @@ const TickerItem = (props) => {
             const data = await FetchTickerDetails(name);
             if (props.selectedTicker !== null) {
               if (data.name === props.selectedTicker.name) {
-                props.selectTicker(null);
+                props.selectSingleTicker(null);
               } else {
-                props.selectTicker(data);
+                props.selectSingleTicker(data);
               }
             } else {
-              props.selectTicker(data);
+              props.selectSingleTicker(data);
             }
           }}
         >
@@ -61,4 +61,4 @@ const mapStateToProps = (state) => {
   return { selectedTicker: state.selectedTicker };
 };
 
-export default connect(mapStateToProps, { selectTicker })(TickerItem);
+export default connect(mapStateToProps, { selectSingleTicker })(TickerItem);

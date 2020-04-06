@@ -1,6 +1,11 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { selectTickers } from "../actions";
 
-export default class Settings extends Component {
+class Settings extends Component {
+  change = (event) => {
+    this.props.selectTickers(event.target.value);
+  }
   render() {
     return (
       <div className="container margin-top">
@@ -12,10 +17,10 @@ export default class Settings extends Component {
               <label className="label">Select Default Tickers</label>
               <div className="control">
                 <div className="select">
-                  <select>
-                    <option>FAANG</option>
-                    <option>Other Tech Companies</option>
-                    <option>Major Exchanges</option>
+                  <select onChange={this.change}>
+                    <option value="faang">FAANG</option>
+                    <option value="otherTech">Other Tech Companies</option>
+                    <option value="auto">Automotive Companies</option>
                   </select>
                 </div>
               </div>
@@ -42,3 +47,9 @@ export default class Settings extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return { selectedTicker: state.selectedTicker };
+};
+
+export default connect(mapStateToProps, { selectTickers })(Settings);

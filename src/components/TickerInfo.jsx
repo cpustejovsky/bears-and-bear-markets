@@ -42,7 +42,7 @@ const TickerInfo = ({ selectTicker, selectedTicker }) => {
           <div className="content">
             <p>
               <strong>Current Price: </strong>
-              {price}
+              ${price}
             </p>
 
             <p>

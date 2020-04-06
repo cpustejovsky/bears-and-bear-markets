@@ -19,13 +19,13 @@ const TickerItem = (props) => {
     if (percent) {
       return (
         <>
-          {name}: {price} ({percent}%)
+          {name}: ${price} ({percent}%)
         </>
       );
     } else {
       return (
         <>
-          {name}: {price}
+          {name}: ${price}
         </>
       );
     }

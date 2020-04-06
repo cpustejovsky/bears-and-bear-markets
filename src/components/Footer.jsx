@@ -6,8 +6,8 @@ export default function CtaButton() {
   return (
     <>
       <CtaModal ctaModal={ctaModal} setCtaModal={setCtaModal} />
-      <footer class="footer margin-top">
-        <div class="content has-text-centered">
+      <footer className="footer margin-top">
+        <div className="content has-text-centered">
           <p>
             <strong>Data provided</strong> by{" "}
             <a onClick={() => setCtaModal(!ctaModal)}>Polygon.io</a>. Source

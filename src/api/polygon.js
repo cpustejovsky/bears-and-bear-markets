@@ -112,21 +112,26 @@ export function FetchStockTicker(symbol) {
 }
 
 export async function FetchTickerDetails(symbol) {
-  const response = await polygon.get(`/v1/meta/symbols/${symbol}/company`);
-  const companyData = {
-    symbol: response.data.symbol,
-    logo: response.data.logo,
-    name: response.data.name,
-    country: response.data.country,
-    sector: response.data.sector,
-    industry: response.data.industry,
-    ceo: response.data.ceo,
-    employees: response.data.employees,
-    url: response.data.url,
-    description: response.data.description,
-    similar: response.data.similar
-  };
-  return companyData;
+  try {
+    const response = await polygon.get(`/v1/meta/symbols/${symbol}/company`);
+    const companyData = {
+      symbol: response.data.symbol,
+      logo: response.data.logo,
+      name: response.data.name,
+      country: response.data.country,
+      sector: response.data.sector,
+      industry: response.data.industry,
+      ceo: response.data.ceo,
+      employees: response.data.employees,
+      url: response.data.url,
+      description: response.data.description,
+      similar: response.data.similar
+    };
+    return companyData;
+  } catch (error) {
+    console.log(error)
+    return "error"
+  }
 }
 
 //TODO: check that this work when market status api endpoint is back online

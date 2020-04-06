@@ -37,6 +37,7 @@ const TickerItem = (props) => {
           className="ticker__tick"
           onClick={async () => {
             const data = await FetchTickerDetails(name);
+            console.log(data)
             if (props.selectedTicker !== null) {
               if (data.name === props.selectedTicker.name) {
                 props.selectSingleTicker(null);

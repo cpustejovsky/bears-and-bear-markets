@@ -1,15 +1,46 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { selectTickers } from "../actions";
+import { selectSingleTicker, selectTickers } from "../actions";
 import history from "../history";
-
+import { FetchTickerDetails } from "../api/polygon";
 class Settings extends Component {
   state = {
     term: "",
+    data: {},
+    error: null,
   };
   changeDefaultTickers = (event) => {
     this.props.selectTickers(event.target.value);
   };
+  onInputChange = (event) => {
+    this.setState({ term: event.target.value });
+  };
+  searchStockSymbol = async () => {
+    console.log(this.state.term);
+    const data = await FetchTickerDetails(this.state.term);
+    if (data === "error") {
+      this.setState({
+        error: "Sorry, your search did not return anything. Please try again",
+      });
+    } else {
+      this.setState({
+        error: null,
+      });
+      this.setState({ data: data });
+    }
+  };
+  renderSearchedStock() {
+    return (
+      <a
+        onClick={() => {
+          this.props.selectSingleTicker(this.state.data);
+          history.push("/")
+        }}
+      >
+        {this.state.data.name}
+      </a>
+    );
+  }
   render() {
     return (
       <div className="container margin-top">
@@ -37,15 +68,21 @@ class Settings extends Component {
                   className="input"
                   type="text"
                   placeholder="AAPL"
-                  value={this.state.term}
                   onChange={this.onInputChange}
                 />
               </div>
-              <div class="control">
-                <a class="button is-success">Search</a>
+              <div className="control">
+                <a
+                  className="button is-success"
+                  onClick={this.searchStockSymbol}
+                >
+                  Search
+                </a>
               </div>
             </div>
-            <div className="divider"/>
+            {this.state.data.name ? this.renderSearchedStock() : null}
+            {this.state.error ? this.state.error : null}
+            <div className="margin-top" />
             <div className="field is-grouped">
               <div className="control">
                 <button
@@ -72,4 +109,4 @@ const mapStateToProps = (state) => {
   return { selectedTicker: state.selectedTicker };
 };
 
-export default connect(mapStateToProps, { selectTickers })(Settings);
+export default connect(mapStateToProps, { selectSingleTicker, selectTickers })(Settings);

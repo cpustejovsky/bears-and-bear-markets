@@ -10,67 +10,81 @@ const TickerInfo = ({ selectTicker, selectedTicker }) => {
   const renderSimilarStocks = () => {
     return selectedTicker.similar.map((company) => {
       return (
-        <li>
-          <a
-            onClick={async () => {
-              const data = await FetchTickerDetails(company);
-              selectTicker(data);
-            }}
-          >
-            {company}
-          </a>
-        </li>
+        <a
+          className="list-item"
+          onClick={async () => {
+            const data = await FetchTickerDetails(company);
+            selectTicker(data);
+          }}
+        >
+          {company}
+        </a>
       );
     });
   };
 
   return (
     <div>
-      <div className="columns">
-        <div className="column is-one-quarter">
-          <img src={selectedTicker.logo} alt={selectedTicker.name} />
+      <div className="card">
+        <div className="card-content">
+          <div className="media">
+            <div class="media-left">
+              <figure className="image is-48x48">
+                <img src={selectedTicker.logo} alt={selectedTicker.name} />
+              </figure>
+            </div>
+            <div className="media-content">
+              <div className="title is-2">
+                <a href={selectedTicker.website}>{selectedTicker.name}</a>
+              </div>
+            </div>
+          </div>
+          <div className="content">
+            <p>
+              <strong>Current Price: </strong>
+              {price}
+            </p>
+
+            <p>
+              {" "}
+              <strong>Today's Change: </strong>
+              {change ? change : "N/A"}
+            </p>
+
+            <p>
+              {" "}
+              <strong>Today's Change in Percent: </strong>
+              {percent ? percent : "N/A"}
+            </p>
+
+            <p>
+              {" "}
+              <strong>CEO: </strong>
+              {selectedTicker.ceo}
+            </p>
+            <p>
+              <strong>Number of Employees: </strong>
+              {selectedTicker.employees}
+            </p>
+            <p>
+              <strong>Sector: </strong>
+              {selectedTicker.sector}
+            </p>
+
+            <p>
+              {" "}
+              <strong>Description: </strong>
+              {selectedTicker.description}
+            </p>
+
+            <div>
+              {" "}
+              <strong>Similar Stocks: </strong>
+              {renderSimilarStocks()}
+            </div>
+          </div>
         </div>
-        <div className="column is-four-quarter">{selectedTicker.name}</div>
       </div>
-      <ul>
-        <li>
-          <strong>Current Price: </strong>
-          {price}
-        </li>
-        <li>
-          <strong>Today's Change: </strong>
-          {change ? change : "N/A"}
-        </li>
-        <li>
-          <strong>Today's Change in Percent: </strong>
-          {percent ? percent : "N/A"}
-        </li>
-        <li>
-          <strong>CEO: </strong>
-          {selectedTicker.ceo}
-        </li>
-        <li>
-          <strong>Number of Employees: </strong>
-          {selectedTicker.employees}
-        </li>
-        <li>
-          <strong>Sector: </strong>
-          {selectedTicker.sector}
-        </li>
-        <li>
-          <strong>Description: </strong>
-          {selectedTicker.description}
-        </li>
-        <li>
-          <strong>Similar Stocks: </strong>
-          <ul>{renderSimilarStocks()}</ul>
-        </li>
-        <li>
-          <strong>
-            <a href={selectedTicker.url}>visit website</a>
-          </strong>
-        </li>
-      </ul>
     </div>
   );
 };

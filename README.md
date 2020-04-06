@@ -11,8 +11,6 @@ At my previous company, people would regularly want to have the financial news o
 ### On Click
 ![on-click-mockup](on-click.png)
 When clicking a one of the items in the stock ticker, this view will appear; live video will keep playing
-### Settings View
-![settings-mockup](settings.png)
 
 ## Requirements
 * ~~Display video player that displays live nature feed~~

@@ -114,6 +114,7 @@ export function FetchStockTicker(symbol) {
 export async function FetchTickerDetails(symbol) {
   const response = await polygon.get(`/v1/meta/symbols/${symbol}/company`);
   const companyData = {
+    symbol: response.data.symbol,
     logo: response.data.logo,
     name: response.data.name,
     country: response.data.country,

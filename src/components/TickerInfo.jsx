@@ -34,7 +34,7 @@ const TickerInfo = ({ selectSingleTicker, selectedTicker }) => {
               </figure>
             </div>
             <div className="media-content">
-              <div className="title is-2">
+              <div className="title is-3">
                 <a href={selectedTicker.website}>{selectedTicker.name}</a>
               </div>
             </div>
